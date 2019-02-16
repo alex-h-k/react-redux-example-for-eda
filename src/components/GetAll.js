@@ -8,9 +8,9 @@ class GetAll extends Component {
     super(props);
   }
 
-  componentDidMount = () => {
-    this.props.getAll();
-  };
+  // componentDidMount = () => {
+  //   this.props.getAll();
+  // };
 
   getAll = () => {
     this.props.getAll();
