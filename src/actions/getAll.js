@@ -1,10 +1,10 @@
 import request from "superagent";
 
-export function getAllAction(dispatch) {
+export function getAllAction() {
   return function(dispatch) {
     dispatch(loading());
     return request("/api/v1/cats/").then(result => {
-      console.log(result);
+      // console.log(result);
       if (!result.status == 200) {
         dispatch(errorMessage(response.status));
       } else {

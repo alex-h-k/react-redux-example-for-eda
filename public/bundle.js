@@ -38156,12 +38156,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! superagent */ "./node_modules/superagent/lib/client.js");
 /* harmony import */ var superagent__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(superagent__WEBPACK_IMPORTED_MODULE_0__);
 
-function getAllAction(dispatch) {
+function getAllAction() {
   return function (dispatch) {
     dispatch(loading());
     return superagent__WEBPACK_IMPORTED_MODULE_0___default()("/api/v1/cats/").then(function (result) {
-      console.log(result);
-
+      // console.log(result);
       if (!result.status == 200) {
         dispatch(errorMessage(response.status));
       } else {
@@ -38241,21 +38240,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOneAction", function() { return getOneAction; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
- // This will make an API request to get cat by id, while telling redux its loading and what response comes back
 
 function getOneAction(id) {
   return function (dispatch) {
     dispatch(loading());
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/cats/".concat(id)).then(function (response) {
-      if (response.data[0] == null) {
-        //if no cats come back from DB that means none exist with that ID
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/v1/cats/".concat(id)).then(function (result) {
+      console.log(result);
+
+      if (result.data[0] == null) {
         dispatch(errorMessage("no cat found"));
       } else {
-        dispatch(receiveCats(response.data));
+        dispatch(receiveCats(result.data));
       }
     });
   };
-}
+} // This will make an API request to get cat by id, while telling redux its loading and what response comes back
+// export function getOneAction(id) {
+//   return function(dispatch) {
+//     dispatch(loading());
+//     axios.get(`/api/v1/cats/${id}`).then(response => {
+//       console.log(response);
+//       if (response.data[0] == null) {
+//if no cats come back from DB that means none exist with that ID
+//         dispatch(errorMessage("no cat found"));
+//       } else {
+//         dispatch(receiveCats(response.data));
+//       }
+//     });
+//   };
+// }
 
 function loading() {
   return {
