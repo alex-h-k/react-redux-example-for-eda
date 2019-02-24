@@ -7,7 +7,7 @@ class GetOne extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      num: 1
+      num: null
     };
   }
 
@@ -25,12 +25,12 @@ class GetOne extends Component {
     return (
       <div>
         <h2>Get a cat</h2>
-        <p style={{ color: "red" }}>{this.props.state.cats.err}</p>
-        {this.props.state.cats.loading && <Loading />}
-        {!this.props.state.cats.loading && (
+        <p style={{ color: "red" }}>{this.props.state.err}</p>
+        {this.props.state.loading && <Loading />}
+        {!this.props.state.loading && (
           <ul>
-            {this.props.state.cats.catData &&
-              this.props.state.cats.catData.map(cat => {
+            {this.props.state.catData &&
+              this.props.state.catData.map(cat => {
                 return cat.id == this.state.num ? (
                   <li key={cat.id}>{cat.name}</li>
                 ) : null;
@@ -50,7 +50,7 @@ class GetOne extends Component {
 
 function mapStateToProps(state) {
   return {
-    state: state
+    state: state.cats
   };
 }
 

@@ -45,6 +45,7 @@ class SaveOne extends Component {
   };
 
   render() {
+    console.log(this.state);
     return (
       <div>
         <h2>Save cat</h2>
@@ -56,21 +57,21 @@ class SaveOne extends Component {
           onChange={this.handleChange}
           type="text"
           placeholder="name"
-          value={this.state.name}
+          // value={this.state.name}
         />
         <input
           name="age"
           onChange={this.handleChange}
           type="number"
           placeholder="age"
-          value={this.state.age}
+          // value={this.state.age}
         />
         <input
           name="location"
           onChange={this.handleChange}
           type="text"
           placeholder="location"
-          value={this.state.location}
+          // value={this.state.location}
         />
         <button onClick={this.save}>Save</button>
       </div>

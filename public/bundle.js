@@ -38261,7 +38261,7 @@ function getOneAction(id) {
 //     axios.get(`/api/v1/cats/${id}`).then(response => {
 //       console.log(response);
 //       if (response.data[0] == null) {
-//if no cats come back from DB that means none exist with that ID
+// if no cats come back from DB that means none exist with that ID
 //         dispatch(errorMessage("no cat found"));
 //       } else {
 //         dispatch(receiveCats(response.data));
@@ -38750,7 +38750,7 @@ function (_Component) {
     });
 
     _this.state = {
-      num: 1
+      num: null
     };
     return _this;
   }
@@ -38764,7 +38764,7 @@ function (_Component) {
         style: {
           color: "red"
         }
-      }, this.props.state.cats.err), this.props.state.cats.loading && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_loading__WEBPACK_IMPORTED_MODULE_2__["default"], null), !this.props.state.cats.loading && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.state.cats.catData && this.props.state.cats.catData.map(function (cat) {
+      }, this.props.state.err), this.props.state.loading && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_loading__WEBPACK_IMPORTED_MODULE_2__["default"], null), !this.props.state.loading && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.state.catData && this.props.state.catData.map(function (cat) {
         return cat.id == _this2.state.num ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: cat.id
         }, cat.name) : null;
@@ -38783,7 +38783,7 @@ function (_Component) {
 
 function mapStateToProps(state) {
   return {
-    state: state
+    state: state.cats
   };
 }
 
@@ -38969,6 +38969,7 @@ function (_Component) {
   _createClass(SaveOne, [{
     key: "render",
     value: function render() {
+      console.log(this.state);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Save cat"), this.state.error && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         style: {
           color: "red"
@@ -38977,20 +38978,20 @@ function (_Component) {
         name: "name",
         onChange: this.handleChange,
         type: "text",
-        placeholder: "name",
-        value: this.state.name
+        placeholder: "name" // value={this.state.name}
+
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         name: "age",
         onChange: this.handleChange,
         type: "number",
-        placeholder: "age",
-        value: this.state.age
+        placeholder: "age" // value={this.state.age}
+
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         name: "location",
         onChange: this.handleChange,
         type: "text",
-        placeholder: "location",
-        value: this.state.location
+        placeholder: "location" // value={this.state.location}
+
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.save
       }, "Save"));
